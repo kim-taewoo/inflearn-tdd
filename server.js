@@ -10,6 +10,7 @@ const app = express();
 // DB 연결
 connectDB();
 
+app.use(express.json({ extended: false }));
 app.use('/api/products', require('./routes'));
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
