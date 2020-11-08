@@ -1,5 +1,4 @@
 const productModel = require('../models/Product');
-// const Product = require('../source-code/tdd-app/models/Product');
 
 exports.createProduct = async (req, res, next) => {
   try {
@@ -10,6 +9,11 @@ exports.createProduct = async (req, res, next) => {
   }
 };
 
-exports.getProducts = async(req,res,next) => {
-  
-}
+exports.getProducts = async (req, res, next) => {
+  try {
+    const allProducts = await productModel.find({});
+    res.status(200).json(allProducts);
+  } catch (error) {
+    next(error)
+  }
+};
